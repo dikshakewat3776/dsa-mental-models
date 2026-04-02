@@ -41,7 +41,7 @@ Problem notes (problem → pattern → brute → optimize → template → code 
 | **C** — Code | Write from **T** only; match naming of the repo / language. |
 | **E** — Edge | `n=0/1`, dupes, negatives, overflow, “no answer” if allowed. |
 | **V** — Variants | Sorted array? 1-based? return all? k-generalization? |
-| **R** — Reuse | Same trick elsewhere (domain doesn’t matter—remember the **shape**). |
+| **R** — Real World Applications | Where can such a pattern be used? What use-cases? |
 ---
 
 

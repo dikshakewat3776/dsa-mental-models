@@ -11,6 +11,7 @@
 # Brute Force: Loop through the array and check if the sum of the two numbers is equal to the target with complexity of O(n^2)
 # Optimal Thinking: Since we know the target, we can use a hash map to store the numbers and their indices.
 # Optimal Solution: Use a hash map for faster lookups of both keys and indices with complexity of O(n)
+# Template: Create hashmap -> loop items -> check if diff is in hashmap -> return indices
 # Code:
 def twoSum(nums, target):
     seen = {}
@@ -41,13 +42,14 @@ print(twoSum([-3,2,4,3,6,8], 6))
 # Brute Force: Loop through the array and check if the element is in the array with complexity of O(n^2)
 # Optimal Thinking: Since we know the array is sorted, we can use a hash map to store the elements and their frequencies with complexity of O(n)
 # Optimal Solution: Use a hash map to store the elements and their frequencies with complexity of O(n)
+# Template: Create hashset -> loop items -> check if item is in hashset -> return True
 # Code:
 def containsDuplicate(nums):
-    seen = set()
+    seen = {}
     for num in nums:
         if num in seen:
-            return True   
-        seen.add(num)
+            return True
+        seen[num] = True
     return False
 print("Contains Duplicate:") 
 print(containsDuplicate([1,2,3,1]))
@@ -70,6 +72,7 @@ print(containsDuplicate([1,2,3,4]))
 # Brute Force: Loop through the string and check if the characters are the same.
 # Optimal Thinking: Since we know the strings are anagrams, we can use a hash map to store the characters and their frequencies.
 # Optimal Solution: Use a hash map to store the characters and their frequencies.
+# Template: Create hashmap -> loop items -> increment count -> check if frequencies are the same -> return True
 # Code:
 def isAnagram(s, t):
     if len(s) != len(t):
@@ -80,14 +83,7 @@ def isAnagram(s, t):
         freq_s[c] = freq_s.get(c, 0) + 1
     for c in t:
         freq_t[c] = freq_t.get(c, 0) + 1
-    return freq_s == freq_t
-print("Valid Anagram:")
-print(isAnagram("anagram", "nagaram"))
-print(isAnagram("cat", "car"))
-# Python Trick:
-from collections import Counter
-def isAnagram(s, t):
-    return Counter(s) == Counter(t)
+    return freq_s == freq_t   
 # Edge Cases: Empty strings, special characters, different lengths
 # Variations: Group anagrams, find all anagrams in a string, etc.
 # Real World Applications example 1: NLP - word 1 + word 2 = target or similar word, duplicate word check
@@ -106,6 +102,7 @@ def isAnagram(s, t):
 # Brute Force: Loop through the array and check if the element is in the array.
 # Optimal Thinking: Since we know the array is sorted, we can use a hash map to store the elements and their frequencies with complexity of O(n)
 # Optimal Solution: Use a hash map to store the elements and their frequencies with complexity of O(n)
+# Template: Loop through the array -> add previous element to current element in place -> return array
 # Code:
 def runningSum(nums):
     for i in range(1, len(nums)):
@@ -132,6 +129,7 @@ print(runningSum([1,1,1,1,1]))
 # Brute Force: Loop through the array and check if the element is in the array.
 # Optimal Thinking: Since we know the array is sorted, we can use a hash map to store the elements and their frequencies.
 # Optimal Solution: Use a hash map to store the elements and their frequencies.
+# Template: Sort the array -> rank the elements starting from 1 -> map the elements to the rank -> return the rank of the elements
 # Code: 
 def rankTransform(nums):
     s = sorted(nums)
