@@ -24,6 +24,13 @@ def twoSum(nums, target):
 print("Two Sum:")
 print(twoSum([2,7,11,15], 9))
 print(twoSum([-3,2,4,3,6,8], 6))
+# Example:
+# Input: nums = [2,7,11,15], target = 9
+# seen = {2: 0, 7: 1, 11: 2, 15: 3}
+# diff = 9 - 2 = 7
+# diff in seen: True
+# return [seen[diff], i] = [1, 0]
+# return [0, 1]
 # Edge Cases: Negative numbers, duplicates, only two numbers
 # Variations: three sum, four sum, k sum, etc.
 # Real World Applications example 1: Fraud - transaction 1 + transaction 2 = target or suspicious transaction
@@ -54,6 +61,12 @@ def containsDuplicate(nums):
 print("Contains Duplicate:") 
 print(containsDuplicate([1,2,3,1]))
 print(containsDuplicate([1,2,3,4]))
+# Example:
+# Input: nums = [1,2,3,4]
+# seen = {1: True, 2: True, 3: True, 4: True}
+# num = 1
+# num in seen: True
+# return True
 # Edge Cases: Empty array, negative numbers, duplicates
 # Variations: Find all duplicates in an array, count duplicates, etc.
 # Real World Applications example 1: Data validation - check if a user has already registered
@@ -84,6 +97,12 @@ def isAnagram(s, t):
     for c in t:
         freq_t[c] = freq_t.get(c, 0) + 1
     return freq_s == freq_t   
+# Example:
+# Input: s = "anagram", t = "nagaram"
+# freq_s = {'a': 3, 'n': 1, 'g': 1, 'r': 1, 'm': 1}
+# freq_t = {'n': 1, 'a': 3, 'g': 1, 'r': 1, 'm': 1}
+# freq_s == freq_t: True
+# return True
 # Edge Cases: Empty strings, special characters, different lengths
 # Variations: Group anagrams, find all anagrams in a string, etc.
 # Real World Applications example 1: NLP - word 1 + word 2 = target or similar word, duplicate word check
@@ -111,6 +130,12 @@ def runningSum(nums):
 print("Running Sum of 1D Array:")
 print(runningSum([1,2,3,4]))
 print(runningSum([1,1,1,1,1]))
+# Example:
+# Input: nums = [1, 3, 6, 10]
+# nums[1] = nums[1] + nums[0] = 3 + 1 = 4
+# nums[2] = nums[2] + nums[1] = 6 + 4 = 10
+# nums[3] = nums[3] + nums[2] = 10 + 10 = 20
+# return [1,4,10,20]
 # Edge Cases: Empty array, negative numbers, duplicates
 # Variations: Find all duplicates in an array, etc.
 # Real World Applications example 1: Data analysis - calculate the running sum of a stock price
@@ -138,6 +163,11 @@ def rankTransform(nums):
 print("Rank Transform of an Array:")
 print(rankTransform([40,10,20,30]))
 print(rankTransform([1,2,3,4]))
+# Example:
+# Input : nums = [40,10,20,30]
+# s = [10,20,30,40]
+# rank = {10: 1, 20: 2, 30: 3, 40: 4}
+# nums = [40,10,20,30]
 # Edge Cases: Empty array, negative numbers, duplicates, duplicates with different ranks
 # Variations: Relative rank, absolute rank, coordinate compression, etc.
 # Real World Applications example 1: Data normalization - large values to compressed ranks

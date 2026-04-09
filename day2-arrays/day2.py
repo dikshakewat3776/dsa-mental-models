@@ -29,6 +29,10 @@ print(productExceptSelf([-1,1,0,-3,3]))
 # Example: [1,2,3, 4]
 # Prefix: [1, 1, 2, 6]
 # Suffix: [24, 12, 4, 1]
+# res = [1,1,1,1] -> [1,1,1,1] -> [1,1,2,1] -> [1,1,2,6]
+# res[i] *= right -> res[3] *= 1 -> res[2] *= 2 -> res[1] *= 6 -> res[0] *= 6
+# res = [24, 12, 8, 6]
+# res = [1,1,1,1,1] -> [1,1,1,1,1] -> [1,1,1,1,1] -> [1,1,1,1,1] -> [1,1,1,1,1]
 # Result: [24, 12, 8, 6]
 # Edge Cases: Negative numbers, duplicates, only two numbers
 # Variations: Product of Array Except Self with division, Product of Array Except Self with zero, Product of Array Except Self with negative numbers
@@ -61,6 +65,10 @@ print("Maximum Subarray:")
 print(maxSubArray([-2,1,-3,4,-1,2,1,-5,4]))
 print(maxSubArray([1,2,3,4,5]))
 print(maxSubArray([-1,-2,-3,-4,-5]))
+# Example: [-2,1,-3,4,-1,2,1,-5,4]
+# maxSum = -2 -> 1 -> 1 -> 4 -> 4 -> 5 -> 6 -> 6 -> 6
+# curSum = 0 -> 1 -> 0 -> 4 -> 3 -> 5 -> 6 -> 1 -> 5
+# return 6
 # Edge Cases: Negative numbers, duplicates, only two numbers
 # Variations: Maximum Subarray with division, Maximum Subarray with zero, Maximum Subarray with negative numbers
 # Real World Applications example 1: Stock Trading / Profit Window → Find best time window to maximize profit.
@@ -92,6 +100,12 @@ print(maxProductSubarray([2,3,-2,4]))
 print(maxProductSubarray([-2,1,-3,4,-1,2,1,-5,4]))
 print(maxProductSubarray([1,2,3,4,5]))
 print(maxProductSubarray([-1,-2,-3,-4,-5]))
+# Example: [2,3,-2,4]
+# 
+# curr_max = 2 -> 6 -> -2 -> -8
+# curr_min = 2 -> 3 -> -6 -> -24
+# res = 2 -> 6 -> 6 -> 6
+# return 6
 # Edge Cases: Negative numbers, duplicates, only two numbers
 # Variations: Maximum Product Subarray with division, Maximum Product Subarray with zero, Maximum Product Subarray with negative numbers
 # Real World Applications example 1: Volatility Analysis (Finance) → Profit/loss with gains & losses (negatives flip outcome). Also in signal processing where inversion (negative signals) can amplify output.
