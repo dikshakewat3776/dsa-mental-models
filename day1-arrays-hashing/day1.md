@@ -16,16 +16,15 @@
   - If complement is in `seen`, return indices.
   - Otherwise store current number and index.
 - **Time / Space:** `O(n)` / `O(n)`
-
-```python
-def twoSum(nums, target):
-    seen = {}
-    for i in range(len(nums)):
-        diff = target - nums[i]
-        if diff in seen:
-            return [seen[diff], i]
-        seen[nums[i]] = i
-    return []
+- **Pattern (Highlight):** Complement lookup using a hash map.
+- **Pattern Template (Highlight):**
+```text
+seen = {}
+for i in range(len(nums)):
+    diff = target - nums[i]
+    if diff in seen:
+        return [seen[diff], i]
+    seen[nums[i]] = i
 ```
 
 **Example**
@@ -64,15 +63,15 @@ def twoSum(nums, target):
   - Else insert element into `seen`.
   - Return `False` after full traversal.
 - **Time / Space:** `O(n)` / `O(n)`
-
-```python
-def containsDuplicate(nums):
-    seen = {}
-    for num in nums:
-        if num in seen:
-            return True
-        seen[num] = True
-    return False
+- **Pattern (Highlight):** Membership check with hash set.
+- **Pattern Template (Highlight):**
+```text
+seen = set()
+for num in nums:
+    if num in seen:
+        return True
+    seen.add(num)
+return False
 ```
 
 **Example**
@@ -110,18 +109,17 @@ def containsDuplicate(nums):
   - Count character frequencies for `t`.
   - Compare the two maps.
 - **Time / Space:** `O(n)` / `O(1)` for fixed alphabet, otherwise `O(n)`
-
-```python
-def isAnagram(s, t):
-    if len(s) != len(t):
-        return False
-    freq_s = {}
-    freq_t = {}
-    for c in s:
-        freq_s[c] = freq_s.get(c, 0) + 1
-    for c in t:
-        freq_t[c] = freq_t.get(c, 0) + 1
-    return freq_s == freq_t
+- **Pattern (Highlight):** Character frequency counting.
+- **Pattern Template (Highlight):**
+```text
+if len(s) != len(t):
+    return False
+freq_s, freq_t = {}, {}
+for c in s:
+    freq_s[c] = freq_s.get(c, 0) + 1
+for c in t:
+    freq_t[c] = freq_t.get(c, 0) + 1
+return freq_s == freq_t
 ```
 
 **Example**
@@ -148,7 +146,7 @@ def isAnagram(s, t):
 
 ## 4) Running Sum of 1D Array
 
-- **LeetCode:** [1480. Running Sum of 1d Array](https://leetcode.com/problems/running-sum-of-1d-array/)
+- **LeetCode:** [1480. Running Sum of 1D Array](https://leetcode.com/problems/running-sum-of-1d-array/)
 - **Problem:** Return running sum where `runningSum[i] = nums[0] + ... + nums[i]`.
 - **Pattern:** Prefix sum
 - **Brute Force:** For each index, sum from start each time (`O(n^2)`)
@@ -158,12 +156,12 @@ def isAnagram(s, t):
   - Add previous cumulative sum to current element.
   - Continue to end and return array.
 - **Time / Space:** `O(n)` / `O(1)` extra (in-place)
-
-```python
-def runningSum(nums):
-    for i in range(1, len(nums)):
-        nums[i] += nums[i - 1]
-    return nums
+- **Pattern (Highlight):** Prefix sum accumulation.
+- **Pattern Template (Highlight):**
+```text
+for i in range(1, len(nums)):
+    nums[i] += nums[i - 1]
+return nums
 ```
 
 **Example**
@@ -201,12 +199,12 @@ def runningSum(nums):
   - Map original elements to ranks.
   - Return mapped rank array.
 - **Time / Space:** `O(n log n)` / `O(n)`
-
-```python
-def rankTransform(nums):
-    unique_sorted = sorted(set(nums))
-    rank = {num: i + 1 for i, num in enumerate(unique_sorted)}
-    return [rank[num] for num in nums]
+- **Pattern (Highlight):** Sorting + rank mapping.
+- **Pattern Template (Highlight):**
+```text
+unique_sorted = sorted(set(nums))
+rank = {num: i + 1 for i, num in enumerate(unique_sorted)}
+return [rank[num] for num in nums]
 ```
 
 **Example**

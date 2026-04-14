@@ -13,6 +13,16 @@
 # Product Pattern : [bcd, acd, abd, abc]
 # Prefix Pattern : [1, a, ab, abc] -> multiply all elements from left to right
 # Suffix Pattern : [abc, bc, c, 1] -> multiply all elements from right to left
+# Pattern Template:
+# res = [1] * n
+# prefix
+# for i in range(1, n):
+#     res[i] = res[i-1] * nums[i-1]
+#  suffix
+# right = 1
+# for i in range(n-1, -1, -1):
+#     res[i] *= right
+#     right *= nums[i]
 # Code:
 def productExceptSelf(nums):
     res = [1] * len(nums)  # new array with all elements as 1
@@ -51,6 +61,13 @@ print(productExceptSelf([-1,1,0,-3,3]))
 # Optimal Thinking: We are visiting each element in the array if any prefix of element is negative it is minimising my sum so we just ignore those and move ahead with adding the current element to the sum.
 # Optimal Solution: Kadane's Algorithm
 # Template: Initialize first element -> Decide : continue with current sum or start a new sum -> Update overall maximum sum
+# Pattern Template:
+# curr = nums[0]
+# max_sum = nums[0]
+# for num in nums[1:]:
+#     curr = max(num, curr + num)
+#     max_sum = max(max_sum, curr)
+# return maxSum
 # Code:
 def maxSubArray(nums):
     maxSum = nums[0]  # Initialize the maximum sum with the first element
@@ -86,6 +103,15 @@ print(maxSubArray([-1,-2,-3,-4,-5]))
 # Optimal Thinking: We are visiting each element in the array and identifying the current min and max product and updating the overall maximum product.
 # Optimal Solution: Kadane's Algorithm (Variant) + Dynamic Programming
 # Template: Initialize maximum element as result -> Initialize current min and max to 1 -> Update current max and min product -> Update result with maximum product
+# Pattern Template:
+# curr_max = curr_min = res = nums[0]
+# for num in nums[1:]:
+#     if num < 0:
+#         curr_max, curr_min = curr_min, curr_max
+
+#     curr_max = max(num, curr_max * num)
+#     curr_min = min(num, curr_min * num)
+#     res = max(res, curr_max)
 # Code:
 def maxProductSubarray(nums):
     res = max(nums) # Initialize the result with the maximum element
@@ -122,6 +148,13 @@ print(maxProductSubarray([-1,-2,-3,-4,-5]))
 # Optimal Thinking: We are visiting each element in the array and counting the frequency of each element and returning the element with frequency greater than n/2.
 # Optimal Solution: Boyer-Moore Voting Algorithm
 # Template: Initialize a candidate and a count -> Visit each element and update the candidate and count -> Return the candidate
+# Pattern Template:
+# count = 0
+# candidate = None
+# for num in nums:
+#     if count == 0:
+#         candidate = num
+#     count += (1 if num == candidate else -1)
 # Code:
 def majorityElement(nums):
     res , count = 0, 0 # Initialize the candidate and count to 0

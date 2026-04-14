@@ -15,21 +15,17 @@
   - Track running suffix product right to left.
   - Multiply suffix into result at each index.
 - **Time / Space:** `O(n)` / `O(1)` extra (excluding output array)
-
-```python
-def productExceptSelf(nums):
-    res = [1] * len(nums)
-
-    # Prefix products
-    for i in range(1, len(nums)):
-        res[i] = res[i - 1] * nums[i - 1]
-
-    # Suffix products
-    right = 1
-    for i in range(len(nums) - 1, -1, -1):
-        res[i] *= right
-        right *= nums[i]
-    return res
+- **Pattern (Highlight):** Prefix and suffix product multiplication.
+- **Pattern Template (Highlight):**
+```text
+res = [1] * len(nums)
+for i in range(1, len(nums)):
+    res[i] = res[i - 1] * nums[i - 1]
+right = 1
+for i in range(len(nums) - 1, -1, -1):
+    res[i] *= right
+    right *= nums[i]
+return res
 ```
 
 **Example**
@@ -67,18 +63,17 @@ def productExceptSelf(nums):
   - Reset `curSum` if it becomes negative.
   - Update `maxSum` each step.
 - **Time / Space:** `O(n)` / `O(1)`
-
-```python
-def maxSubArray(nums):
-    maxSum = nums[0]
-    curSum = 0
-
-    for n in nums:
-        if curSum < 0:
-            curSum = 0
-        curSum += n
-        maxSum = max(maxSum, curSum)
-    return maxSum
+- **Pattern (Highlight):** Kadane's running-sum reset.
+- **Pattern Template (Highlight):**
+```text
+maxSum = nums[0]
+curSum = 0
+for n in nums:
+    if curSum < 0:
+        curSum = 0
+    curSum += n
+    maxSum = max(maxSum, curSum)
+return maxSum
 ```
 
 **Example**
@@ -112,25 +107,23 @@ def maxSubArray(nums):
 - **Optimal Idea:** A negative can flip min <-> max, so track both at each step
 - **Template:**
   - Keep `curr_max`, `curr_min`, and global `res`.
-  - For each element, compute products with previous max/min.
+  - For each element, compute products with previous max/min (use temp values).
   - Update current max/min using element and two products.
   - Update global result.
 - **Time / Space:** `O(n)` / `O(1)`
-
-```python
-def maxProductSubarray(nums):
-    res = max(nums)
-    curr_min = 1
-    curr_max = 1
-
-    for n in nums:
-        temp_max = curr_max * n
-        temp_min = curr_min * n
-
-        curr_max = max(n, temp_max, temp_min)
-        curr_min = min(n, temp_max, temp_min)
-        res = max(res, curr_max)
-    return res
+- **Pattern (Highlight):** Track both min and max product each step.
+- **Pattern Template (Highlight):**
+```text
+res = max(nums)
+curr_min = 1
+curr_max = 1
+for n in nums:
+    temp_max = curr_max * n
+    temp_min = curr_min * n
+    curr_max = max(n, temp_max, temp_min)
+    curr_min = min(n, temp_max, temp_min)
+    res = max(res, curr_max)
+return res
 ```
 
 **Example**
@@ -141,6 +134,7 @@ def maxProductSubarray(nums):
 - Contains zeros that reset product chain.
 - All negative numbers.
 - Single element array.
+- Signs flipping across adjacent negatives.
 - Large magnitudes and overflow concerns.
 
 **Variations**
@@ -168,15 +162,15 @@ def maxProductSubarray(nums):
   - Increment for same candidate, decrement otherwise.
   - Return final candidate.
 - **Time / Space:** `O(n)` / `O(1)`
-
-```python
-def majorityElement(nums):
-    candidate, count = 0, 0
-    for n in nums:
-        if count == 0:
-            candidate = n
-        count += 1 if n == candidate else -1
-    return candidate
+- **Pattern (Highlight):** Boyer-Moore vote cancellation.
+- **Pattern Template (Highlight):**
+```text
+candidate, count = 0, 0
+for n in nums:
+    if count == 0:
+        candidate = n
+    count += 1 if n == candidate else -1
+return candidate
 ```
 
 **Example**
